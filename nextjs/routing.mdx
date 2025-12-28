@@ -29,11 +29,7 @@ app/
 
 ```tsx
 // app/blog/[slug]/page.tsx
-export default function BlogPost({ 
-  params 
-}: { 
-  params: { slug: string } 
-}) {
+export default function BlogPost({ params }: { params: { slug: string } }) {
   return <h1>Post: {params.slug}</h1>;
 }
 ```
@@ -63,7 +59,8 @@ app/
 ```
 
 <Tip>
-  라우트 그룹은 관련 라우트를 논리적으로 그룹화하거나, 그룹별로 다른 레이아웃을 적용할 때 유용합니다.
+  라우트 그룹은 관련 라우트를 논리적으로 그룹화하거나, 그룹별로 다른 레이아웃을
+  적용할 때 유용합니다.
 </Tip>
 
 ## 병렬 라우트
@@ -84,7 +81,7 @@ app/
 ### Link 컴포넌트
 
 ```tsx
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Navigation() {
   return (
@@ -100,32 +97,32 @@ export default function Navigation() {
 ### 프로그래매틱 네비게이션
 
 ```tsx
-'use client';
-import { useRouter } from 'next/navigation';
+"use client";
+import { useRouter } from "next/navigation";
 
 export default function LoginButton() {
   const router = useRouter();
-  
+
   const handleLogin = () => {
     // 로그인 로직
-    router.push('/dashboard');
+    router.push("/dashboard");
   };
-  
+
   return <button onClick={handleLogin}>Login</button>;
 }
 ```
 
 <Warning>
-  `useRouter`는 클라이언트 컴포넌트에서만 사용할 수 있습니다. 파일 상단에 `'use client'`를 추가해야 합니다.
+  `useRouter`는 클라이언트 컴포넌트에서만 사용할 수 있습니다. 파일 상단에 `'use
+  client'`를 추가해야 합니다.
 </Warning>
 
 ## 라우팅 요약
 
-| 패턴 | 예시 | 설명 |
-|------|------|------|
-| 정적 라우트 | `/about` | 고정된 경로 |
-| 동적 라우트 | `/blog/[slug]` | 단일 동적 세그먼트 |
-| Catch-all | `/docs/[...slug]` | 다중 동적 세그먼트 |
-| 선택적 Catch-all | `/docs/[[...slug]]` | 선택적 다중 동적 세그먼트 |
-| 라우트 그룹 | `/(marketing)/about` | URL에 영향 없이 그룹화 |
-
+| 패턴             | 예시                 | 설명                      |
+| ---------------- | -------------------- | ------------------------- |
+| 정적 라우트      | `/about`             | 고정된 경로               |
+| 동적 라우트      | `/blog/[slug]`       | 단일 동적 세그먼트        |
+| Catch-all        | `/docs/[...slug]`    | 다중 동적 세그먼트        |
+| 선택적 Catch-all | `/docs/[[...slug]]`  | 선택적 다중 동적 세그먼트 |
+| 라우트 그룹      | `/(marketing)/about` | URL에 영향 없이 그룹화    |
